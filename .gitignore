@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Local environment variables (never commit secrets)
+.env
+.env.*
+
+# Local email settings for scheduled runs (hold your Resend API key).
+# The user copies local-secrets.*.example to these names and fills them in;
+# the real files must never be committed. The .example templates are NOT
+# listed here on purpose — they ship with the repo as blank templates.
+local-secrets.sh
+local-secrets.bat
+
+# Probe scratch output — these are throwaway suggestion files produced by
+# probe.py / probe_direct.py during manual ATS-discovery sessions. The
+# canonical mappings live in companies.yaml; these are just scratchpads.
+detected-mappings.yaml
+direct-output.yaml
+probe-output*.yaml
+
+# NOTE on state/ and reports/:
+# These are intentionally NOT ignored. The GitHub Actions workflows commit
+# state/*.json (the diff baseline) and reports/ (the run history) back to
+# the repo — that persistence across runs is how the delta model works.
+# The repo ships with empty state/ and reports/ dirs (via .gitkeep); the
+# first run populates them. Do not add state/ or reports/ here, or the
+# scraper will lose its baseline every run and re-report everything as new.

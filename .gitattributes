@@ -1,0 +1,36 @@
+# Enforce consistent line endings for everyone who clones this repo,
+# regardless of their local git config or operating system.
+#
+# Why this exists: core.autocrlf is a per-machine setting that lives in
+# .git/config and is never committed, so it can't protect a shared repo.
+# .gitattributes IS committed, so these rules apply to every clone and
+# every contributor — no "works on my machine" line-ending churn.
+
+# Default: let git decide text vs binary, and normalize text to LF in the
+# repository. Working-tree endings are left to each user's core.autocrlf,
+# but the stored (committed) form is always LF, so diffs stay clean.
+* text=auto
+
+# Source and config files: explicitly LF in the repo.
+*.py    text eol=lf
+*.yaml  text eol=lf
+*.yml   text eol=lf
+*.md    text eol=lf
+*.txt   text eol=lf
+*.json  text eol=lf
+*.cfg   text eol=lf
+*.toml  text eol=lf
+.gitignore  text eol=lf
+.gitattributes text eol=lf
+LICENSE text eol=lf
+
+# Windows-specific scripts, if any are ever added, should keep CRLF.
+*.bat   text eol=crlf
+*.ps1   text eol=crlf
+
+# Binary files: never touch line endings (none currently, future-proofing).
+*.png   binary
+*.jpg   binary
+*.gif   binary
+*.ico   binary
+*.pdf   binary

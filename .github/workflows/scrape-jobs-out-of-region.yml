@@ -1,0 +1,110 @@
+name: Scrape Jobs (Out of Region)
+
+on:
+  # ──────────────────────────────────────────────────────────────────
+  # WEEKLY SCHEDULE — DISABLED BY DEFAULT.
+  #
+  # Out-of-region is an occasional "what's happening elsewhere" check,
+  # so it ships manual-only: trigger it from the Actions tab when you
+  # want it, no recurring email by default.
+  #
+  # TO ENABLE THE WEEKLY RUN: uncomment the two `schedule:` lines below
+  # (remove the leading "# " from each), commit, and push to the default
+  # branch. GitHub takes 15-60 min to register a newly-enabled cron, and
+  # the first run fires at the next scheduled time after that.
+  #
+  # The schedule is Sunday 9pm Pacific. NOTE THE UTC DAY ROLLOVER: 9pm
+  # PST Sunday is 05:00 UTC *Monday* (PST = UTC-8, so 21:00 + 8 = 05:00
+  # next day), so the cron day-of-week is 1 (Monday), not 0 (Sunday),
+  # even though you think of this as "Sunday night." Lands in the inbox
+  # ready for Monday morning review.
+  #
+  # Times are fixed UTC and do NOT adjust for DST. In summer (PDT,
+  # UTC-7) this fires at 10pm local instead of 9pm. Adjust the UTC value
+  # yourself if that drift bothers you.
+  #
+  # SCHEDULING NEAR OTHER RUNS — read before enabling:
+  # Both this workflow and the main daily scraper commit state/ and
+  # reports/ back to the repo. They write DIFFERENT files (out-of-region
+  # uses last_run_out_of_region.json and its own CSV name), so there's no
+  # content conflict — but two git pushes racing each other can cause one
+  # to be rejected ("fetch first"). The commit step below does a
+  # `git pull --rebase` to absorb that case. As a rule of thumb, still
+  # keep at least a ~2 hour gap between this run and the main daily run
+  # (currently 16:00 UTC); 05:00 UTC is ~11 hours away, plenty of margin.
+  # ──────────────────────────────────────────────────────────────────
+  # schedule:
+  #   - cron: '0 5 * * 1'  # 9pm PST Sunday (05:00 UTC Monday)
+
+  # Manual trigger — the default way to run this workflow. Click
+  # "Run workflow" on the Actions tab whenever you want an out-of-region
+  # check.
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'No-op flag (time guard was removed); retained for compatibility'
+        required: false
+        type: boolean
+        default: true
+
+# Separate concurrency group from the main workflow. If they shared a
+# group, an out-of-region run could block (or be blocked by) a daily run.
+# Independent groups let them run without interfering — the git rebase in
+# the commit step handles the only real shared resource (the repo).
+concurrency:
+  group: scrape-jobs-out-of-region
+  cancel-in-progress: false
+
+permissions:
+  contents: write  # needed to commit state/ and reports/ back to the repo
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper (out of region)
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+        run: |
+          if [ "${{ inputs.force }}" = "true" ]; then
+            python scrape.py --out-of-region --force
+          else
+            python scrape.py --out-of-region
+          fi
+
+      - name: Commit state and report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Stage anything new or changed in state/ and reports/.
+          git add state/ reports/
+
+          if git diff --cached --quiet; then
+            echo "No state/report changes to commit."
+          else
+            git commit -m "Scrape (out of region) $(date -u +%Y-%m-%d)"
+            # Rebase onto any commits the daily workflow may have pushed
+            # since this run checked out, so our push fast-forwards cleanly
+            # instead of being rejected. --autostash isn't needed (working
+            # tree is clean after commit), but rebase pulls in their commit
+            # and replays ours on top.
+            git pull --rebase origin main
+            git push
+          fi

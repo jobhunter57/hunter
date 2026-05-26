@@ -1,0 +1,102 @@
+name: Probe Audit (ATS slug health)
+
+on:
+  # ──────────────────────────────────────────────────────────────────
+  # WEEKLY SCHEDULE — DISABLED BY DEFAULT.
+  #
+  # The probe audit is a read-only weekly health check of every company's
+  # ATS slug. It ships manual-only: trigger it from the Actions tab when
+  # you want it. No recurring email by default.
+  #
+  # TO ENABLE THE WEEKLY RUN: uncomment the `schedule:` line below (remove
+  # the leading "# "), commit, and push to the default branch. GitHub
+  # takes 15-60 min to register a newly-enabled cron; the first run fires
+  # at the next scheduled time after that.
+  #
+  # The schedule is Monday 5am Pacific = 13:00 UTC Monday (PST = UTC-8, so
+  # 5 + 8 = 13). NO day rollover here (unlike the out-of-region workflow):
+  # 5am local is still Monday in UTC. The intent is to have a fresh slug-
+  # health report waiting first thing Monday morning.
+  #
+  # Times are fixed UTC and do NOT adjust for DST. In summer (PDT, UTC-7)
+  # this fires at 6am local instead of 5am. Adjust the UTC value yourself
+  # if that drift bothers you.
+  #
+  # SCHEDULING NEAR OTHER RUNS — read before enabling:
+  # This workflow and the main daily scraper both commit state/ and
+  # reports/ back to the repo. They write DIFFERENT files (the audit uses
+  # state/probe_audit.json and reports/probe/), so there's no content
+  # conflict — but two git pushes racing can cause one to be rejected.
+  # The commit step below does `git pull --rebase` to absorb that. As a
+  # rule of thumb keep a ~2 hour gap from the daily run (currently 16:00
+  # UTC); 13:00 UTC is 3 hours clear, fine.
+  # ──────────────────────────────────────────────────────────────────
+  # schedule:
+  #   - cron: '0 13 * * 1'  # 5am PST Monday (13:00 UTC Monday)
+
+  # Manual trigger — the default way to run this workflow.
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'No-op flag (no time guard exists); retained for symmetry'
+        required: false
+        type: boolean
+        default: true
+
+# Separate concurrency group from the other two workflows.
+concurrency:
+  group: probe-audit
+  cancel-in-progress: false
+
+permissions:
+  contents: write  # needed to commit state/probe_audit.json and reports/probe/
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30  # probing every company can take a while
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run probe audit
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+        run: |
+          if [ "${{ inputs.force }}" = "true" ]; then
+            python probe_audit.py --force
+          else
+            python probe_audit.py
+          fi
+
+      - name: Commit state and report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Stage the probe audit's state file and report directory only.
+          # (We don't touch the scraper's state/last_run*.json here, though
+          # `git add state/` would also pick up probe_audit.json cleanly.)
+          git add state/probe_audit.json reports/probe/
+
+          if git diff --cached --quiet; then
+            echo "No probe-audit changes to commit."
+          else
+            git commit -m "Probe audit $(date -u +%Y-%m-%d)"
+            # Rebase onto any commits the daily scraper pushed since checkout
+            # so our push fast-forwards cleanly instead of being rejected.
+            git pull --rebase origin main
+            git push
+          fi

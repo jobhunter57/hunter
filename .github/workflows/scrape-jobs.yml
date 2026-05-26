@@ -1,0 +1,83 @@
+name: Scrape Jobs
+
+on:
+  # Two runs per day, every day. Times are fixed UTC and do NOT adjust for
+  # daylight saving — pick UTC values that suit you and own the local-time
+  # drift across DST boundaries yourself.
+  #
+  # Current values target 7am and 10am PST (testing cadence):
+  #   15:00 UTC = 7am PST  (8am PDT in summer — drifts, by design)
+  #   18:00 UTC = 10am PST (11am PDT in summer)
+  #
+  # The scraper has no time guard — it does work whenever invoked, so the
+  # cron lines below are the sole schedule. GitHub Actions cron is not
+  # minute-accurate and can be delayed 15-30+ min under load, or rarely
+  # dropped entirely. See scrape.py for the (removed) time-guard history.
+  schedule:
+    - cron: '0 15 * * *'  # 7am PST, daily
+
+  # Manual trigger for testing and backfills.
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'No-op flag (time guard was removed); retained for compatibility'
+        required: false
+        type: boolean
+        default: true
+
+# Only run one instance at a time; if a slow run is still going when the
+# next cron fires, queue rather than overlap.
+concurrency:
+  group: scrape-jobs
+  cancel-in-progress: false
+
+permissions:
+  contents: write  # needed to commit state/ and reports/ back to the repo
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+          FROM_EMAIL: ${{ secrets.FROM_EMAIL }}
+        run: |
+          if [ "${{ inputs.force }}" = "true" ]; then
+            python scrape.py --force
+          else
+            python scrape.py
+          fi
+
+      - name: Commit state and report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Stage anything new or changed in state/ and reports/.
+          # `git add` is a no-op if there's nothing matching, so it's safe
+          # to run unconditionally. We then check whether the staging area
+          # actually has changes before committing (avoids empty commits).
+          git add state/ reports/
+
+          if git diff --cached --quiet; then
+            echo "No state/report changes to commit."
+          else
+            git commit -m "Scrape $(date -u +%Y-%m-%d)"
+            git push
+          fi

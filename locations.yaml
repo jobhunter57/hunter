@@ -1,0 +1,150 @@
+# Location filter for job postings.
+#
+# A job matches if it satisfies BOTH:
+#   1. At least one allow pattern (in any of the three sub-sections) hits
+#   2. No exclude pattern hits
+#
+# Matching is case-insensitive substring containment for cities/states.
+# Remote patterns and excludes are regex (also case-insensitive). The
+# location string used for matching is whatever the ATS returns, which is
+# inconsistent — could be "San Francisco", "San Francisco, CA",
+# "San Francisco, California, US", "Remote — United States", etc. The
+# patterns below are deliberately tolerant of these variations.
+#
+# Tune by editing this file; no code changes needed. The matcher logs
+# everything it accepts/rejects at INFO level, so you can grep the run
+# output to verify tuning effects.
+
+allow:
+
+  # Specific cities. Plain substring match — "San Francisco" hits both
+  # "San Francisco" and "San Francisco, CA" and "Remote (San Francisco)".
+  cities:
+    - San Francisco
+    - South San Francisco
+    - San Mateo
+    - Palo Alto
+    - Mountain View
+    - Redwood City
+    - Redwood Shores
+    - Sunnyvale
+    - Santa Clara
+    - Oakland
+    - Berkeley
+    - Burlingame
+    - Milpitas
+    - Los Altos
+    - Danville
+    - Culver City
+    - Los Angeles
+    - Santa Monica
+    - San Diego
+    - Seattle
+    - Bellevue
+    - Kirkland
+    - Portland
+    - New York
+    - Brooklyn
+
+  # State-level fallback. Catches "Remote — California" or "California
+  # (Remote)" style listings that don't name a specific city.
+  states:
+    - California
+    - Washington
+    - Oregon
+    - New York
+
+  # Country/region-level fallback. Many companies list remote positions
+  # just as "United States" or "North America" without explicitly using
+  # the word "Remote" — these are still in-scope. Also catches the common
+  # 2-letter state abbreviations ("Austin, TX" — well, TX isn't in our
+  # list, but "Pasadena, CA" or "Brooklyn, NY" needs CA/NY).
+  #
+  # Treated as case-insensitive regex (not substring like cities/states),
+  # so we can anchor short codes with word boundaries. Without this,
+  # "USA" would match "Tulsa", "CA" would match "Canada", "NY" would
+  # match "Anyone" — all bad.
+  #
+  # The excludes below still apply: "Remote — Canada" mentions "Canada"
+  # which IS in North America, but gets caught by the Canada-remote
+  # exclude before reaching this allow list.
+  regions:
+    - "United States"
+    - "\\bUSA\\b"
+    - "\\bU\\.S\\.?\\b"          # matches "U.S." and "U.S"
+    - "North America"
+    - "\\bAmericas\\b"
+    # State abbreviations, anchored so they don't catch random substrings.
+    # OR is deliberately excluded — too many job listings use "Foo OR Bar"
+    # or "City OR Remote" patterns, which would match \\bOR\\b. Oregon
+    # listings still match via the full word "Oregon" (in states above)
+    # and via Portland (in cities above).
+    - "\\bCA\\b"
+    - "\\bWA\\b"
+    - "\\bNY\\b"
+
+  # Regex patterns for remote work. All case-insensitive. Anchored where
+  # it matters to avoid spurious hits (e.g., the bare "Remote$" only
+  # matches when "Remote" is the entire string, not when it appears as
+  # a substring of "Remote - Europe").
+  remote_patterns:
+    - "Remote.*United States"
+    - "Remote.*\\bUS\\b"
+    - "Remote.*USA"
+    - "\\bUS\\b.*Remote"
+    - "USA.*Remote"
+    - "United States.*Remote"
+    - "Remote.*North America"
+    - "North America.*Remote"
+    - "Anywhere in the US"
+    - "Anywhere in the United States"
+    - "^Remote$"
+    - "^Fully Remote$"
+    - "^Remote \\(.*\\)$"   # "Remote (US)", "Remote (any location)" etc.
+
+# Exclusions take precedence over allows. If any exclude regex matches,
+# the location is rejected regardless of what the allow lists say.
+#
+# Why this matters: "Remote, Canada" matches "^Remote" if you weren't
+# careful with anchoring, and "London, UK" doesn't get caught by the
+# allow list but might sneak through some other path. The excludes are
+# the safety net.
+exclude:
+  - "Remote.*Canada"
+  - "Canada.*Remote"
+  - "Remote.*EMEA"
+  - "Remote.*Europe"
+  - "Europe.*Remote"
+  - "Remote.*EU\\b"
+  - "Remote.*UK\\b"
+  - "Remote.*United Kingdom"
+  - "Remote.*Ireland"
+  - "Remote.*Germany"
+  - "Remote.*France"
+  - "Remote.*Spain"
+  - "Remote.*India"
+  - "Remote.*LATAM"
+  - "Remote.*Latin America"
+  - "Remote.*APAC"
+  - "Remote.*Asia"
+  - "Remote.*Australia"
+  - "Remote.*Brazil"
+  - "Remote.*Mexico"
+  # Specific foreign cities that might otherwise survive (e.g., a job
+  # tagged "London, UK" wouldn't be caught by any allow pattern, but
+  # let's be explicit about the common ones rather than rely on the
+  # allow list being exhaustive.)
+  - "\\bLondon\\b"
+  - "\\bDublin\\b"
+  - "\\bBerlin\\b"
+  - "\\bAmsterdam\\b"
+  - "\\bParis\\b"
+  - "\\bMadrid\\b"
+  - "\\bBarcelona\\b"
+  - "\\bToronto\\b"
+  - "\\bVancouver\\b"
+  - "\\bBangalore\\b"
+  - "\\bBengaluru\\b"
+  - "\\bSingapore\\b"
+  - "\\bSydney\\b"
+  - "\\bTokyo\\b"

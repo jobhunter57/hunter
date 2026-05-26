@@ -1,0 +1,33 @@
+# Project configuration.
+#
+# Forks can override these values without touching Python source. Edit
+# this file, run `python scrape.py --dry-run --force` to confirm, then
+# proceed with real runs.
+
+report:
+  # Used as the email subject prefix, the email H1 heading, AND the
+  # CSV filename stem. One string, three surfaces. A fork that picks
+  # "Junior Roles" gets:
+  #   Subject:    [Junior Roles 2026-05-18] · 4 new
+  #   H1:         # Junior Roles — 2026-05-18
+  #   Filename:   2026-05-18 08-00 Junior Roles.csv
+  #
+  # On Windows the filename strips these reserved chars automatically:
+  #   < > : " / \ | ? *
+  # so a title with colons or slashes still produces a valid file (the
+  # reserved chars become underscores on disk; the subject and H1 keep
+  # them verbatim).
+  title: "Job Openings"
+
+  # IANA timezone name controlling the timestamps in the email subject,
+  # the email H1, and the CSV filename. The scraper itself runs whenever
+  # GitHub Actions fires the cron (see .github/workflows/scrape-jobs.yml);
+  # this setting only affects how the run time is DISPLAYED, so reports
+  # read in your local time rather than UTC.
+  #
+  # Full list of valid names:
+  #   https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  # Common examples:
+  #   America/Los_Angeles, America/New_York, America/Chicago,
+  #   Europe/London, Europe/Berlin, Asia/Tokyo, Australia/Sydney
+  timezone: "America/Los_Angeles"
