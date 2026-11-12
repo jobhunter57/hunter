@@ -16,3 +16,37 @@ companies:
   - {name: Datadog, url: "https://careers.datadoghq.com", ats: greenhouse, ats_config: {board: datadog}}
   - {name: Snowflake, url: "https://careers.snowflake.com", ats: ashby, ats_config: {org: snowflake}}
   - {name: Twilio, url: "https://www.twilio.com/en-us/company/jobs", ats: greenhouse, ats_config: {board: twilio}}
+  - {name: Vercel, url: "https://boards.greenhouse.io/vercel", ats: greenhouse, ats_config: {board: vercel}}
+  - {name: Imbue, url: "https://boards.greenhouse.io/imbue", ats: greenhouse, ats_config: {board: imbue}}
+  - {name: Together AI, url: "https://boards.greenhouse.io/togetherai", ats: greenhouse, ats_config: {board: togetherai}}
+  - {name: Nuro, url: "https://boards.greenhouse.io/nuro", ats: greenhouse, ats_config: {board: nuro}}
+  - {name: Robinhood, url: "https://boards.greenhouse.io/robinhood", ats: greenhouse, ats_config: {board: robinhood}}
+  - {name: Brex, url: "https://boards.greenhouse.io/brex", ats: greenhouse, ats_config: {board: brex}}
+  - {name: Affirm, url: "https://boards.greenhouse.io/affirm", ats: greenhouse, ats_config: {board: affirm}}
+  - {name: Chime, url: "https://boards.greenhouse.io/chime", ats: greenhouse, ats_config: {board: chime}}
+  - {name: Salesloft, url: "https://boards.greenhouse.io/salesloft", ats: greenhouse, ats_config: {board: salesloft}}
+  - {name: Calendly, url: "https://boards.greenhouse.io/calendly", ats: greenhouse, ats_config: {board: calendly}}
+  - {name: Fivetran, url: "https://boards.greenhouse.io/fivetran", ats: greenhouse, ats_config: {board: fivetran}}
+  - {name: Discord, url: "https://boards.greenhouse.io/discord", ats: greenhouse, ats_config: {board: discord}}
+  - {name: Airtable, url: "https://boards.greenhouse.io/airtable", ats: greenhouse, ats_config: {board: airtable}}
+  - {name: Asana, url: "https://boards.greenhouse.io/asana", ats: greenhouse, ats_config: {board: asana}}
+  - {name: Duolingo, url: "https://boards.greenhouse.io/duolingo", ats: greenhouse, ats_config: {board: duolingo}}
+  - {name: Cockroach Labs, url: "https://boards.greenhouse.io/cockroachlabs", ats: greenhouse, ats_config: {board: cockroachlabs}}
+  - {name: Snorkel AI, url: "https://boards.greenhouse.io/snorkelai", ats: greenhouse, ats_config: {board: snorkelai}}
+  - {name: Labelbox, url: "https://boards.greenhouse.io/labelbox", ats: greenhouse, ats_config: {board: labelbox}}
+  - {name: CoreWeave, url: "https://boards.greenhouse.io/coreweave", ats: greenhouse, ats_config: {board: coreweave}}
+  - {name: Linear, url: "https://jobs.ashbyhq.com/linear", ats: ashby, ats_config: {org: linear}}
+  - {name: Cursor, url: "https://jobs.ashbyhq.com/cursor", ats: ashby, ats_config: {org: cursor}}
+  - {name: Perplexity, url: "https://jobs.ashbyhq.com/perplexity", ats: ashby, ats_config: {org: perplexity}}
+  - {name: ElevenLabs, url: "https://jobs.ashbyhq.com/elevenlabs", ats: ashby, ats_config: {org: elevenlabs}}
+  - {name: Sierra, url: "https://jobs.ashbyhq.com/sierra", ats: ashby, ats_config: {org: sierra}}
+  - {name: Decagon, url: "https://jobs.ashbyhq.com/decagon", ats: ashby, ats_config: {org: decagon}}
+  - {name: Baseten, url: "https://jobs.ashbyhq.com/baseten", ats: ashby, ats_config: {org: baseten}}
+  - {name: Modal, url: "https://jobs.ashbyhq.com/modal", ats: ashby, ats_config: {org: modal}}
+  - {name: Patreon, url: "https://jobs.ashbyhq.com/patreon", ats: ashby, ats_config: {org: patreon}}
+  - {name: Watershed, url: "https://jobs.ashbyhq.com/watershed", ats: ashby, ats_config: {org: watershed}}
+  - {name: Notion, url: "https://jobs.ashbyhq.com/notion", ats: ashby, ats_config: {org: notion}}
+  - {name: Abridge, url: "https://jobs.ashbyhq.com/abridge", ats: ashby, ats_config: {org: abridge}}
+  - {name: Old Mission Capital, url: "https://jobs.ashbyhq.com/old-mission-capital", ats: ashby, ats_config: {org: old-mission-capital}}
+  - {name: Plaid, url: "https://jobs.ashbyhq.com/plaid", ats: ashby, ats_config: {org: plaid}}
+  - {name: Cerebras, url: "https://jobs.ashbyhq.com/cerebras", ats: ashby, ats_config: {org: cerebras}}
