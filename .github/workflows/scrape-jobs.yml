@@ -14,7 +14,7 @@ on:
   # minute-accurate and can be delayed 15-30+ min under load, or rarely
   # dropped entirely. See scrape.py for the (removed) time-guard history.
   schedule:
-    - cron: '0 15 * * *'  # 7am PST, daily
+    - cron: '30 0 * * *'  # 6am IST daily
 
   # Manual trigger for testing and backfills.
   workflow_dispatch:

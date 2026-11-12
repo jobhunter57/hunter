@@ -1,116 +1,14 @@
-# =============================================================================
-# titles.yaml — which job titles count as a match
-# =============================================================================
-#
-# This is a WORKED EXAMPLE that targets engineering-leadership roles
-# (Engineering Manager through CTO). It's fully functional as-is, but it's
-# meant to be REPLACED with whatever roles you want to track — sales,
-# design, data, product, anything. Edit the entries below; no code changes
-# needed.
-#
-# HOW MATCHING WORKS
-# ------------------
-# Each entry under `titles:` has a name and two lists of case-insensitive
-# regular expressions:
-#
-#   - patterns:  ANY pattern matching the job title = a hit for this category.
-#   - excludes:  ANY exclude matching the title DISQUALIFIES it, even if a
-#                pattern matched. Excludes win over patterns.
-#
-# Example: the title "Engineering Program Manager" matches the Engineering
-# Manager pattern `engineering ... manager`, but is then thrown out by the
-# exclude `program manager`. Net result: not a match. Tune both lists after
-# your first 2-3 runs based on the false positives/negatives you see.
-#
-# A NOTE ON SHORT-ACRONYM PATTERNS
-# --------------------------------
-# A couple of patterns below match short acronyms — `\bcto\b` and
-# `\bem,?\s+` ("EM, Platform"). These are the most false-positive-prone:
-# `\bcto\b` could match an unrelated "CTO" token, and `\bem` is a very short
-# anchor. They're kept because in practice they catch real titles this
-# cohort uses, and the excludes mop up the common false hits. If you adapt
-# this file and add your own short-acronym patterns, expect to spend the
-# most tuning effort there.
-# =============================================================================
-
 titles:
-  - name: Engineering Manager
+  - name: Senior Engineering Manager
     patterns:
-      - '\b(?:engineering|software)\s+manager\b'
-      - '\bmanager,?\s+(?:sw\s+)?engineering\b'
-      - '\bem,?\s+'                                 # "EM, Platform"
+      - '\b(?:senior|sr\.?)\s+(?:engineering|software)\s+manager\b'
+      - '\b(?:senior|sr\.?)\s+manager\s*[,\-:]?\s*(?:sw\s+|software\s+)?engineering\b'
+      - '\bhead\s+of\s+engineering\b'
     excludes:
-      - 'program\s+manager'
+      - '\bstaff\b'
+      - 'program'
       - 'product\s+manager'
       - 'project\s+manager'
-      - 'operations\s+manager'
-      - 'community\s+manager'
-      - 'account\s+manager'
-
-  - name: Director of Engineering
-    patterns:
-      - '\bdirector\s+of\s+engineering\b'
-      - '\bengineering\s+director\b'
-      - '\bdirector,?\s+engineering\b'
-      - '\bsenior\s+director,?\s+engineering\b'
-    excludes:
-      - 'director\s+of\s+engineering\s+(?:operations|program|programs|recruiting)'
-
-  - name: VP of Engineering
-    patterns:
-      - '\b(?:vp|vice\s+president)\s+(?:of\s+)?engineering\b'
-      - '\bsvp\s+(?:of\s+)?engineering\b'
-      - '\bhead\s+of\s+engineering\b'              # often equivalent at smaller cos
-    excludes: []
-
-  - name: CTO
-    patterns:
-      - '\bchief\s+technology\s+officer\b'
-      - '\bcto\b'
-    excludes:
-      - 'office\s+of\s+the\s+cto'                  # ICs in CTO office, not the role
-      - 'cto[-\s]+as[-\s]+a[-\s]+service'
-
-# =============================================================================
-# SECOND WORKED EXAMPLE — a different domain (commented out)
-# =============================================================================
-#
-# To show the structure generalizes beyond engineering, here's a complete,
-# ready-to-use block for project-management roles. Uncomment it (remove the
-# leading "# " from each line, keeping the indentation) to track these
-# alongside — or instead of — the engineering categories above.
-#
-# IMPORTANT — overlap with the example above: the Engineering Manager entry
-# EXCLUDES 'project manager' (to keep PMs out of an eng-manager search). If
-# you enable this PM block while keeping the eng block, that's fine — they're
-# independent categories, and a single posting can match more than one. But
-# it illustrates a key idea: one category's exclude is another category's
-# target. When you build your own categories, think about how their patterns
-# and excludes interact.
-#
-#  - name: Project Manager
-#    patterns:
-#      - '\bproject\s+manager\b'
-#      - '\bmanager,?\s+project\b'
-#      - '\bpm,?\s+'                                # "PM, Infrastructure" — short anchor, expect false positives
-#    excludes:
-#      - 'program\s+manager'                        # PgM is a distinct role
-#      - 'product\s+manager'                        # different PM
-#      - 'associate\s+project\s+manager'            # drop if you DO want junior roles
-#
-#  - name: Senior Project Manager
-#    patterns:
-#      - '\bsenior\s+project\s+manager\b'
-#      - '\bsr\.?\s+project\s+manager\b'
-#      - '\blead\s+project\s+manager\b'
-#    excludes:
-#      - 'program\s+manager'
-#      - 'product\s+manager'
-#
-#  - name: Project Leader
-#    patterns:
-#      - '\bproject\s+lead(?:er)?\b'                # matches "Project Lead" and "Project Leader"
-#      - '\blead,?\s+project\b'
-#    excludes:
-#      - 'product\s+lead'
-#      - 'program\s+lead'
+      - 'software\s+engineer\b'
+      - '\bml\s+engineer'
+      - 'machine\s+learning\s+engineer'

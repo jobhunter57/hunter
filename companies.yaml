@@ -1,142 +1,18 @@
-# Sorted alphabetically by company name (case-insensitive).
-#
-# Each company has:
-#   - name:       Display name used in reports
-#   - url:        Canonical careers URL (for fallback / reference)
-#   - region:     Bay Area | CA Other | Washington | NYC
-#   - hq:         HQ city
-#   - ats:        greenhouse | lever | ashby | workable | smartrecruiters | unknown | skip
-#   - ats_config: ATS-specific identifiers (typically a slug or board name)
-#   - probe_url:  (optional) override URL used by probe.py
-#
-# `ats: unknown` entries still need verification. The block comment below
-# each such entry shows what probe v3 found (typically 0-job matches that
-# are likely false positives — slug collisions or stale boards).
-#
-# Verification source is noted on each `ats:` line:
-#   # detected via probe          — probe v2 (HTML/redirect scan)
-#   # detected via probe v3 (N)   — probe v3 (direct API call), N jobs
-#   # detected via probe v2 + v3  — both probes agree
-#   # VERIFIED at scaffold time   — confirmed manually during initial build
-
 companies:
-
-  - name: Airbyte
-    url: https://airbyte.com/company/careers
-    region: Bay Area
-    hq: San Francisco
-    ats: ashby  # detected via probe
-    ats_config:
-      org: airbyte
-
-  - name: BetterUp
-    url: https://www.betterup.com/about-us/careers
-    region: Bay Area
-    hq: San Francisco
-    ats: ashby  # detected via probe
-    ats_config:
-      org: betterup
-
-  - name: Databricks
-    url: https://www.databricks.com/company/careers
-    region: Bay Area
-    hq: San Francisco
-    ats: greenhouse  # detected via probe v3 (784 jobs)
-    ats_config:
-      board: databricks
-
-  - name: Electric AI
-    url: https://www.electric.ai/careers
-    region: NYC
-    hq: New York
-    ats: ashby  # detected via probe
-    ats_config:
-      org: Electric
-
-  - name: Glean
-    url: https://www.glean.com/careers
-    region: Bay Area
-    hq: Palo Alto
-    ats: smartrecruiters  # detected via probe v3 (1 job)
-    ats_config:
-      company: glean
-
-  - name: Gusto
-    url: https://gusto.com/about/careers
-    region: Bay Area
-    hq: San Francisco
-    ats: greenhouse  # detected via probe v3 (75 jobs)
-    ats_config:
-      board: gusto
-
-  - name: Highspot
-    url: https://www.highspot.com/careers/
-    region: Washington
-    hq: Seattle
-    ats: lever  # detected via probe v3 (4 jobs)
-    ats_config:
-      slug: highspot
-
-  - name: Ironclad
-    url: https://ironcladapp.com/careers/
-    region: Bay Area
-    hq: San Francisco
-    ats: ashby  # detected via probe
-    ats_config:
-      org: ironcladhq
-
-  - name: Lyra Health
-    url: https://www.lyrahealth.com/careers/
-    region: Bay Area
-    hq: Burlingame
-    ats: lever  # detected via probe v3 (408 jobs)
-    ats_config:
-      slug: lyrahealth
-
-  - name: SmartRecruiters
-    url: https://www.smartrecruiters.com/careers/
-    region: Bay Area
-    hq: San Francisco
-    ats: smartrecruiters  # detected via probe v3 (22 jobs)
-    ats_config:
-      company: smartrecruiters
-
-  - name: Tribble
-    url: https://www.tribble.ai/careers/
-    region: Bay Area
-    hq: San Francisco
-    ats: unknown
-    # Probe v3: matched smartrecruiters API with slug 'tribble' but 0 jobs.
-    # Verify at: https://api.smartrecruiters.com/v1/companies/tribble/postings
-
-  - name: Uplimit
-    url: https://uplimit.com/careers
-    region: Bay Area
-    hq: San Francisco
-    ats: unknown
-    # Probe v3: matched smartrecruiters API with slug 'uplimit' but 0 jobs.
-    # Verify at: https://api.smartrecruiters.com/v1/companies/uplimit/postings
-
-  - name: Vercel
-    url: https://vercel.com/careers
-    region: Bay Area
-    hq: San Francisco
-    ats: greenhouse  # detected via probe
-    ats_config:
-      board: vercel
-
-  - name: Vivun
-    url: https://www.vivun.com/careers
-    region: Bay Area
-    hq: Oakland
-    ats: ashby  # detected via probe
-    ats_config:
-      org: vivun
-
-  - name: You.com
-    url: https://about.you.com/careers
-    region: Bay Area
-    hq: Palo Alto
-    ats: greenhouse  # detected via probe v3 (11 jobs)
-    ats_config:
-      board: youcom
+  - {name: Stripe, url: "https://stripe.com/jobs", ats: greenhouse, ats_config: {board: stripe}}
+  - {name: Coinbase, url: "https://www.coinbase.com/careers", ats: greenhouse, ats_config: {board: coinbase}}
+  - {name: Databricks, url: "https://www.databricks.com/company/careers", ats: greenhouse, ats_config: {board: databricks}}
+  - {name: Ramp, url: "https://ramp.com/careers", ats: ashby, ats_config: {org: ramp}}
+  - {name: Harvey, url: "https://www.harvey.ai/careers", ats: ashby, ats_config: {org: harvey}}
+  - {name: Anthropic, url: "https://www.anthropic.com/careers", ats: greenhouse, ats_config: {board: anthropic}}
+  - {name: OpenAI, url: "https://openai.com/careers", ats: ashby, ats_config: {org: openai}}
+  - {name: Cloudflare, url: "https://www.cloudflare.com/careers", ats: greenhouse, ats_config: {board: cloudflare}}
+  - {name: MongoDB, url: "https://www.mongodb.com/company/careers", ats: greenhouse, ats_config: {board: mongodb}}
+  - {name: Rubrik, url: "https://www.rubrik.com/company/careers", ats: greenhouse, ats_config: {board: rubrik}}
+  - {name: Airbnb, url: "https://careers.airbnb.com", ats: greenhouse, ats_config: {board: airbnb}}
+  - {name: Figma, url: "https://www.figma.com/careers", ats: greenhouse, ats_config: {board: figma}}
+  - {name: Okta, url: "https://www.okta.com/company/careers", ats: greenhouse, ats_config: {board: okta}}
+  - {name: Elastic, url: "https://www.elastic.co/careers", ats: greenhouse, ats_config: {board: elastic}}
+  - {name: Datadog, url: "https://careers.datadoghq.com", ats: greenhouse, ats_config: {board: datadog}}
+  - {name: Snowflake, url: "https://careers.snowflake.com", ats: ashby, ats_config: {org: snowflake}}
+  - {name: Twilio, url: "https://www.twilio.com/en-us/company/jobs", ats: greenhouse, ats_config: {board: twilio}}
