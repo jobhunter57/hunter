@@ -50,3 +50,7 @@ companies:
   - {name: Old Mission Capital, url: "https://jobs.ashbyhq.com/old-mission-capital", ats: ashby, ats_config: {org: old-mission-capital}}
   - {name: Plaid, url: "https://jobs.ashbyhq.com/plaid", ats: ashby, ats_config: {org: plaid}}
   - {name: Cerebras, url: "https://jobs.ashbyhq.com/cerebras", ats: ashby, ats_config: {org: cerebras}}
+  - {name: Zoox, url: "https://jobs.lever.co/zoox", ats: lever, ats_config: {slug: zoox}}
+  - {name: Shield AI, url: "https://jobs.lever.co/shieldai", ats: lever, ats_config: {slug: shieldai}}
+  - {name: Palantir, url: "https://jobs.lever.co/palantir", ats: lever, ats_config: {slug: palantir}}
+  - {name: Greenlight, url: "https://jobs.lever.co/greenlight", ats: lever, ats_config: {slug: greenlight}}
