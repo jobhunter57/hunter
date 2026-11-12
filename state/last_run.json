@@ -1,0 +1,120 @@
+{
+  "companies": {
+    "Airbnb": [
+      {
+        "category": "Senior Engineering Manager",
+        "company": "Airbnb",
+        "department": "",
+        "location": "Remote - United States ",
+        "location_match": true,
+        "title": "Senior Engineering Manager - Partner Ecosystem",
+        "url": "https://careers.airbnb.com/positions/8335541?gh_jid=8335541"
+      }
+    ],
+    "Anthropic": [],
+    "Cloudflare": [],
+    "Coinbase": [
+      {
+        "category": "Senior Engineering Manager",
+        "company": "Coinbase",
+        "department": "",
+        "location": "Remote - India",
+        "location_match": true,
+        "title": "Senior Engineering Manager",
+        "url": "https://www.coinbase.com/careers/positions/8265918?gh_jid=8265918"
+      },
+      {
+        "category": "Senior Engineering Manager",
+        "company": "Coinbase",
+        "department": "",
+        "location": "Remote - USA",
+        "location_match": true,
+        "title": "Senior Engineering Manager, AI Foundations",
+        "url": "https://www.coinbase.com/careers/positions/8275226?gh_jid=8275226"
+      },
+      {
+        "category": "Senior Engineering Manager",
+        "company": "Coinbase",
+        "department": "",
+        "location": "Remote - USA",
+        "location_match": true,
+        "title": "Senior Engineering Manager, Payments Platform",
+        "url": "https://www.coinbase.com/careers/positions/8124224?gh_jid=8124224"
+      }
+    ],
+    "Databricks": [
+      {
+        "category": "Senior Engineering Manager",
+        "company": "Databricks",
+        "department": "",
+        "location": "Bengaluru, India",
+        "location_match": true,
+        "title": "Senior Engineering Manager - Backend",
+        "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=7495457002"
+      }
+    ],
+    "Datadog": [],
+    "Elastic": [],
+    "Figma": [],
+    "Harvey": [
+      {
+        "category": "Senior Engineering Manager",
+        "company": "Harvey",
+        "department": "Engineering",
+        "location": "Bengaluru",
+        "location_match": true,
+        "title": "Senior Engineering Manager, Backend",
+        "url": "https://jobs.ashbyhq.com/harvey/235f1793-7b5a-470b-b6ee-4f0f0249623c"
+      }
+    ],
+    "MongoDB": [
+      {
+        "category": "Senior Engineering Manager",
+        "company": "MongoDB",
+        "department": "",
+        "location": "Bengaluru",
+        "location_match": true,
+        "title": "Senior Engineering Manager, Atlas Agent Engine",
+        "url": "https://www.mongodb.com/careers/job/?gh_jid=8239745"
+      }
+    ],
+    "Okta": [
+      {
+        "category": "Senior Engineering Manager",
+        "company": "Okta",
+        "department": "",
+        "location": "Bengaluru, India",
+        "location_match": true,
+        "title": "Senior Engineering Manager",
+        "url": "https://www.okta.com/company/careers/opportunity/8037616?gh_jid=8037616"
+      }
+    ],
+    "OpenAI": [],
+    "Ramp": [],
+    "Rubrik": [
+      {
+        "category": "Senior Engineering Manager",
+        "company": "Rubrik",
+        "department": "",
+        "location": "Bangalore ",
+        "location_match": true,
+        "title": "Senior Engineering Manager - Dev Platform",
+        "url": "https://www.rubrik.com/company/careers/departments/job.8239039?gh_jid=8239039"
+      }
+    ],
+    "Snowflake": [],
+    "Stripe": [],
+    "Twilio": [
+      {
+        "category": "Senior Engineering Manager",
+        "company": "Twilio",
+        "department": "",
+        "location": "Remote - India",
+        "location_match": true,
+        "title": "Senior Engineering Manager (L5)",
+        "url": "https://job-boards.greenhouse.io/twilio/jobs/8001804"
+      }
+    ]
+  },
+  "generated_at": "2026-11-12T06:41:53.710072+00:00"
+}
