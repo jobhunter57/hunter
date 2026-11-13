@@ -12,9 +12,4 @@ allow:
   remote_patterns:
     - 'Remote.*\bIndia\b'
     - '\bIndia\b.*Remote'
-    - 'Remote.*\bUS\b'
-    - 'Remote.*\bUSA\b'
-    - 'Remote.*United States'
-    - '\bUS\b.*Remote'
-    - 'United States.*Remote'
 exclude: []

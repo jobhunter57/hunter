@@ -15,6 +15,7 @@ from .greenhouse import GreenhouseScraper
 from .lever import LeverScraper
 from .smartrecruiters import SmartRecruitersScraper
 from .workable import WorkableScraper
+from .workday import WorkdayScraper
 
 SCRAPER_REGISTRY: dict[str, type[BaseScraper]] = {
     "greenhouse": GreenhouseScraper,
@@ -22,6 +23,7 @@ SCRAPER_REGISTRY: dict[str, type[BaseScraper]] = {
     "ashby": AshbyScraper,
     "workable": WorkableScraper,
     "smartrecruiters": SmartRecruitersScraper,
+    "workday": WorkdayScraper,
 }
 
 __all__ = [
