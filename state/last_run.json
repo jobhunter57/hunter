@@ -1,5 +1,7 @@
 {
   "companies": {
+    "Abridge": [],
+    "Affirm": [],
     "Airbnb": [
       {
         "category": "Senior Engineering Manager",
@@ -11,8 +13,16 @@
         "url": "https://careers.airbnb.com/positions/8335541?gh_jid=8335541"
       }
     ],
+    "Airtable": [],
     "Anthropic": [],
+    "Asana": [],
+    "Baseten": [],
+    "Brex": [],
+    "Calendly": [],
+    "Cerebras": [],
+    "Chime": [],
     "Cloudflare": [],
+    "Cockroach Labs": [],
     "Coinbase": [
       {
         "category": "Senior Engineering Manager",
@@ -42,6 +52,8 @@
         "url": "https://www.coinbase.com/careers/positions/8124224?gh_jid=8124224"
       }
     ],
+    "CoreWeave": [],
+    "Cursor": [],
     "Databricks": [
       {
         "category": "Senior Engineering Manager",
@@ -54,8 +66,14 @@
       }
     ],
     "Datadog": [],
+    "Decagon": [],
+    "Discord": [],
+    "Duolingo": [],
     "Elastic": [],
+    "ElevenLabs": [],
     "Figma": [],
+    "Fivetran": [],
+    "Greenlight": [],
     "Harvey": [
       {
         "category": "Senior Engineering Manager",
@@ -67,6 +85,10 @@
         "url": "https://jobs.ashbyhq.com/harvey/235f1793-7b5a-470b-b6ee-4f0f0249623c"
       }
     ],
+    "Imbue": [],
+    "Labelbox": [],
+    "Linear": [],
+    "Modal": [],
     "MongoDB": [
       {
         "category": "Senior Engineering Manager",
@@ -78,6 +100,8 @@
         "url": "https://www.mongodb.com/careers/job/?gh_jid=8239745"
       }
     ],
+    "Notion": [],
+    "Nuro": [],
     "Okta": [
       {
         "category": "Senior Engineering Manager",
@@ -89,8 +113,14 @@
         "url": "https://www.okta.com/company/careers/opportunity/8037616?gh_jid=8037616"
       }
     ],
+    "Old Mission Capital": [],
     "OpenAI": [],
+    "Palantir": [],
+    "Patreon": [],
+    "Perplexity": [],
+    "Plaid": [],
     "Ramp": [],
+    "Robinhood": [],
     "Rubrik": [
       {
         "category": "Senior Engineering Manager",
@@ -102,8 +132,33 @@
         "url": "https://www.rubrik.com/company/careers/departments/job.8239039?gh_jid=8239039"
       }
     ],
+    "Salesloft": [],
+    "Shield AI": [
+      {
+        "category": "Senior Engineering Manager",
+        "company": "Shield AI",
+        "department": "Engineering",
+        "location": "Bangalore",
+        "location_match": true,
+        "title": "Senior Engineering Manager",
+        "url": "https://jobs.lever.co/shieldai/d618826d-1aff-4516-b02f-8276876061f7"
+      }
+    ],
+    "Sierra": [],
+    "Snorkel AI": [
+      {
+        "category": "Senior Engineering Manager",
+        "company": "Snorkel AI",
+        "department": "",
+        "location": "San Francisco, CA (Hybrid); United States (Remote)",
+        "location_match": true,
+        "title": "Senior Engineering Manager, Federal & Regulated Infrastructure",
+        "url": "https://job-boards.greenhouse.io/snorkelai/jobs/6229274004"
+      }
+    ],
     "Snowflake": [],
     "Stripe": [],
+    "Together AI": [],
     "Twilio": [
       {
         "category": "Senior Engineering Manager",
@@ -114,7 +169,10 @@
         "title": "Senior Engineering Manager (L5)",
         "url": "https://job-boards.greenhouse.io/twilio/jobs/8001804"
       }
-    ]
+    ],
+    "Vercel": [],
+    "Watershed": [],
+    "Zoox": []
   },
-  "generated_at": "2026-11-12T07:18:51.293148+00:00"
+  "generated_at": "2026-11-13T01:42:12.144689+00:00"
 }
