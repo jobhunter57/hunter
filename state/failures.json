@@ -1,5 +1,56 @@
 {
   "alert_threshold": 3,
-  "companies": {},
-  "generated_at": "2026-11-13T01:42:12.145060+00:00"
+  "companies": {
+    "Adobe": {
+      "consecutive_failures": 1,
+      "last_error": "Workday fetch failed for 'adobe': 521 Server Error: <none> for url: https://adobe.wd5.myworkdayjobs.com/wday/cxs/adobe/external_experienced/jobs (https://adobe.wd5.myworkdayjobs.com/wday/cxs/adobe/external_experienced/jobs)",
+      "last_failed_at": "2026-11-14T01:37:28.730776+00:00"
+    },
+    "Cadence": {
+      "consecutive_failures": 1,
+      "last_error": "Workday fetch failed for 'cadence': 521 Server Error: <none> for url: https://cadence.wd1.myworkdayjobs.com/wday/cxs/cadence/External_Careers/jobs (https://cadence.wd1.myworkdayjobs.com/wday/cxs/cadence/External_Careers/jobs)",
+      "last_failed_at": "2026-11-14T01:37:28.731671+00:00"
+    },
+    "Dell": {
+      "consecutive_failures": 1,
+      "last_error": "Workday fetch failed for 'dell': 521 Server Error: <none> for url: https://dell.wd1.myworkdayjobs.com/wday/cxs/dell/External/jobs (https://dell.wd1.myworkdayjobs.com/wday/cxs/dell/External/jobs)",
+      "last_failed_at": "2026-11-14T01:37:28.731665+00:00"
+    },
+    "FICO": {
+      "consecutive_failures": 1,
+      "last_error": "Workday fetch failed for 'fico': 521 Server Error: <none> for url: https://fico.wd1.myworkdayjobs.com/wday/cxs/fico/External/jobs (https://fico.wd1.myworkdayjobs.com/wday/cxs/fico/External/jobs)",
+      "last_failed_at": "2026-11-14T01:37:28.732494+00:00"
+    },
+    "HP": {
+      "consecutive_failures": 1,
+      "last_error": "Workday fetch failed for 'hp': 521 Server Error: <none> for url: https://hp.wd5.myworkdayjobs.com/wday/cxs/hp/ExternalCareerSite/jobs (https://hp.wd5.myworkdayjobs.com/wday/cxs/hp/ExternalCareerSite/jobs)",
+      "last_failed_at": "2026-11-14T01:37:28.732499+00:00"
+    },
+    "Intel": {
+      "consecutive_failures": 1,
+      "last_error": "Workday fetch failed for 'intel': 521 Server Error: <none> for url: https://intel.wd1.myworkdayjobs.com/wday/cxs/intel/External/jobs (https://intel.wd1.myworkdayjobs.com/wday/cxs/intel/External/jobs)",
+      "last_failed_at": "2026-11-14T01:37:28.731667+00:00"
+    },
+    "Motorola Solutions": {
+      "consecutive_failures": 1,
+      "last_error": "Workday fetch failed for 'motorolasolutions': 521 Server Error: <none> for url: https://motorolasolutions.wd5.myworkdayjobs.com/wday/cxs/motorolasolutions/Careers/jobs (https://motorolasolutions.wd5.myworkdayjobs.com/wday/cxs/motorolasolutions/Careers/jobs)",
+      "last_failed_at": "2026-11-14T01:37:28.732502+00:00"
+    },
+    "Nvidia": {
+      "consecutive_failures": 1,
+      "last_error": "Workday fetch failed for 'nvidia': 521 Server Error: <none> for url: https://nvidia.wd5.myworkdayjobs.com/wday/cxs/nvidia/NVIDIAExternalCareerSite/jobs (https://nvidia.wd5.myworkdayjobs.com/wday/cxs/nvidia/NVIDIAExternalCareerSite/jobs)",
+      "last_failed_at": "2026-11-14T01:37:28.730025+00:00"
+    },
+    "Walmart": {
+      "consecutive_failures": 1,
+      "last_error": "Workday fetch failed for 'walmart': 521 Server Error: <none> for url: https://walmart.wd5.myworkdayjobs.com/wday/cxs/walmart/WalmartExternal/jobs (https://walmart.wd5.myworkdayjobs.com/wday/cxs/walmart/WalmartExternal/jobs)",
+      "last_failed_at": "2026-11-14T01:37:28.731659+00:00"
+    },
+    "Workday": {
+      "consecutive_failures": 1,
+      "last_error": "Workday fetch failed for 'workday': 521 Server Error: <none> for url: https://workday.wd5.myworkdayjobs.com/wday/cxs/workday/Workday/jobs (https://workday.wd5.myworkdayjobs.com/wday/cxs/workday/Workday/jobs)",
+      "last_failed_at": "2026-11-14T01:37:28.730782+00:00"
+    }
+  },
+  "generated_at": "2026-11-14T01:37:28.829697+00:00"
 }

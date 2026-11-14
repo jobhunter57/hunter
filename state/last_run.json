@@ -2,23 +2,14 @@
   "companies": {
     "Abridge": [],
     "Affirm": [],
-    "Airbnb": [
-      {
-        "category": "Senior Engineering Manager",
-        "company": "Airbnb",
-        "department": "",
-        "location": "Remote - United States ",
-        "location_match": true,
-        "title": "Senior Engineering Manager - Partner Ecosystem",
-        "url": "https://careers.airbnb.com/positions/8335541?gh_jid=8335541"
-      }
-    ],
+    "Airbnb": [],
     "Airtable": [],
     "Anthropic": [],
     "Asana": [],
     "Baseten": [],
     "Brex": [],
     "Calendly": [],
+    "Capital One": [],
     "Cerebras": [],
     "Chime": [],
     "Cloudflare": [],
@@ -32,26 +23,9 @@
         "location_match": true,
         "title": "Senior Engineering Manager",
         "url": "https://www.coinbase.com/careers/positions/8265918?gh_jid=8265918"
-      },
-      {
-        "category": "Senior Engineering Manager",
-        "company": "Coinbase",
-        "department": "",
-        "location": "Remote - USA",
-        "location_match": true,
-        "title": "Senior Engineering Manager, AI Foundations",
-        "url": "https://www.coinbase.com/careers/positions/8275226?gh_jid=8275226"
-      },
-      {
-        "category": "Senior Engineering Manager",
-        "company": "Coinbase",
-        "department": "",
-        "location": "Remote - USA",
-        "location_match": true,
-        "title": "Senior Engineering Manager, Payments Platform",
-        "url": "https://www.coinbase.com/careers/positions/8124224?gh_jid=8124224"
       }
     ],
+    "Comcast": [],
     "CoreWeave": [],
     "Cursor": [],
     "Databricks": [
@@ -67,6 +41,7 @@
     ],
     "Datadog": [],
     "Decagon": [],
+    "Deutsche Bank": [],
     "Discord": [],
     "Duolingo": [],
     "Elastic": [],
@@ -86,6 +61,17 @@
       }
     ],
     "Imbue": [],
+    "LSEG": [
+      {
+        "category": "Senior Engineering Manager",
+        "company": "LSEG",
+        "department": "",
+        "location": "IND-Bangalore-A, RMZ Infinity; IND-BLR-Divyasree Technopolis",
+        "location_match": true,
+        "title": "Senior Engineering Manager, Risk & Resilience",
+        "url": "https://lseg.wd3.myworkdayjobs.com/en-US/Careers/job/IND-Bangalore-A-RMZ-Infinity/Senior-Engineering-Manager--Risk---Resilience_R0119748-2"
+      }
+    ],
     "Labelbox": [],
     "Linear": [],
     "Modal": [],
@@ -119,6 +105,7 @@
     "Patreon": [],
     "Perplexity": [],
     "Plaid": [],
+    "Qualcomm": [],
     "Ramp": [],
     "Robinhood": [],
     "Rubrik": [
@@ -132,30 +119,21 @@
         "url": "https://www.rubrik.com/company/careers/departments/job.8239039?gh_jid=8239039"
       }
     ],
-    "Salesloft": [],
-    "Shield AI": [
+    "Salesforce": [
       {
         "category": "Senior Engineering Manager",
-        "company": "Shield AI",
-        "department": "Engineering",
-        "location": "Bangalore",
-        "location_match": true,
-        "title": "Senior Engineering Manager",
-        "url": "https://jobs.lever.co/shieldai/d618826d-1aff-4516-b02f-8276876061f7"
-      }
-    ],
-    "Sierra": [],
-    "Snorkel AI": [
-      {
-        "category": "Senior Engineering Manager",
-        "company": "Snorkel AI",
+        "company": "Salesforce",
         "department": "",
-        "location": "San Francisco, CA (Hybrid); United States (Remote)",
+        "location": "India - Hyderabad",
         "location_match": true,
-        "title": "Senior Engineering Manager, Federal & Regulated Infrastructure",
-        "url": "https://job-boards.greenhouse.io/snorkelai/jobs/6229274004"
+        "title": "Senior Manager, Software Engineering (Observability, Kafka, Monitoring)",
+        "url": "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/India---Hyderabad/Senior-Manager--Software-Engineering--Observability--Kafka--Monitoring-_JR355013"
       }
     ],
+    "Salesloft": [],
+    "Shield AI": [],
+    "Sierra": [],
+    "Snorkel AI": [],
     "Snowflake": [],
     "Stripe": [],
     "Together AI": [],
@@ -174,5 +152,5 @@
     "Watershed": [],
     "Zoox": []
   },
-  "generated_at": "2026-11-13T01:42:12.144689+00:00"
+  "generated_at": "2026-11-14T01:37:28.732874+00:00"
 }
