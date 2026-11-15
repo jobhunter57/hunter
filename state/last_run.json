@@ -1,6 +1,7 @@
 {
   "companies": {
     "Abridge": [],
+    "Adobe": [],
     "Affirm": [],
     "Airbnb": [],
     "Airtable": [],
@@ -8,6 +9,7 @@
     "Asana": [],
     "Baseten": [],
     "Brex": [],
+    "Cadence": [],
     "Calendly": [],
     "Capital One": [],
     "Cerebras": [],
@@ -46,9 +48,11 @@
     "Duolingo": [],
     "Elastic": [],
     "ElevenLabs": [],
+    "FICO": [],
     "Figma": [],
     "Fivetran": [],
     "Greenlight": [],
+    "HP": [],
     "Harvey": [
       {
         "category": "Senior Engineering Manager",
@@ -61,6 +65,7 @@
       }
     ],
     "Imbue": [],
+    "Intel": [],
     "LSEG": [
       {
         "category": "Senior Engineering Manager",
@@ -86,8 +91,30 @@
         "url": "https://www.mongodb.com/careers/job/?gh_jid=8239745"
       }
     ],
+    "Motorola Solutions": [
+      {
+        "category": "Senior Engineering Manager",
+        "company": "Motorola Solutions",
+        "department": "",
+        "location": "Bangalore, India",
+        "location_match": true,
+        "title": "Senior Manager Software Engineering",
+        "url": "https://motorolasolutions.wd5.myworkdayjobs.com/en-US/Careers/job/Bangalore-India/Senior-Manager-Software-Engineering_R68141"
+      }
+    ],
     "Notion": [],
     "Nuro": [],
+    "Nvidia": [
+      {
+        "category": "Senior Engineering Manager",
+        "company": "Nvidia",
+        "department": "",
+        "location": "India, Pune",
+        "location_match": true,
+        "title": "Senior Manager, Software Engineering - Employee Productivity",
+        "url": "https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite/job/India-Pune/Senior-Manager--Software-Engineering---Employee-Productivity_JR2024576"
+      }
+    ],
     "Okta": [
       {
         "category": "Senior Engineering Manager",
@@ -150,7 +177,8 @@
     ],
     "Vercel": [],
     "Watershed": [],
+    "Workday": [],
     "Zoox": []
   },
-  "generated_at": "2026-11-14T01:37:28.732874+00:00"
+  "generated_at": "2026-11-15T01:45:21.425205+00:00"
 }
