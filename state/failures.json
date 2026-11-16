@@ -1,16 +1,26 @@
 {
   "alert_threshold": 3,
   "companies": {
+    "Capital One": {
+      "consecutive_failures": 1,
+      "last_error": "Workday fetch failed for 'capitalone': 429 Client Error: Too Many Requests for url: https://capitalone.wd12.myworkdayjobs.com/wday/cxs/capitalone/Capital_One/jobs (https://capitalone.wd12.myworkdayjobs.com/wday/cxs/capitalone/Capital_One/jobs)",
+      "last_failed_at": "2026-11-16T01:58:25.002207+00:00"
+    },
     "Dell": {
-      "consecutive_failures": 2,
+      "consecutive_failures": 3,
       "last_error": "Workday fetch failed for 'dell': 422 Client Error: Unprocessable Entity for url: https://dell.wd1.myworkdayjobs.com/wday/cxs/dell/External/jobs (https://dell.wd1.myworkdayjobs.com/wday/cxs/dell/External/jobs)",
-      "last_failed_at": "2026-11-15T01:45:21.422790+00:00"
+      "last_failed_at": "2026-11-16T01:58:25.002262+00:00"
+    },
+    "Salesforce": {
+      "consecutive_failures": 1,
+      "last_error": "Workday fetch failed for 'salesforce': 429 Client Error: Too Many Requests for url: https://salesforce.wd12.myworkdayjobs.com/wday/cxs/salesforce/External_Career_Site/jobs (https://salesforce.wd12.myworkdayjobs.com/wday/cxs/salesforce/External_Career_Site/jobs)",
+      "last_failed_at": "2026-11-16T01:58:25.001343+00:00"
     },
     "Walmart": {
-      "consecutive_failures": 2,
+      "consecutive_failures": 3,
       "last_error": "Workday fetch failed for 'walmart': 422 Client Error: Unprocessable Entity for url: https://walmart.wd5.myworkdayjobs.com/wday/cxs/walmart/WalmartExternal/jobs (https://walmart.wd5.myworkdayjobs.com/wday/cxs/walmart/WalmartExternal/jobs)",
-      "last_failed_at": "2026-11-15T01:45:21.422759+00:00"
+      "last_failed_at": "2026-11-16T01:58:25.002259+00:00"
     }
   },
-  "generated_at": "2026-11-15T01:45:21.426242+00:00"
+  "generated_at": "2026-11-16T01:58:25.005478+00:00"
 }
