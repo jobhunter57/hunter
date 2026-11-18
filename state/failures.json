@@ -2,80 +2,80 @@
   "alert_threshold": 3,
   "companies": {
     "Adobe": {
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_error": "Workday fetch failed for 'adobe': 429 Client Error: Too Many Requests for url: https://adobe.wd5.myworkdayjobs.com/wday/cxs/adobe/external_experienced/jobs (https://adobe.wd5.myworkdayjobs.com/wday/cxs/adobe/external_experienced/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358188+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484815+00:00"
     },
     "Cadence": {
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_error": "Workday fetch failed for 'cadence': 429 Client Error: Too Many Requests for url: https://cadence.wd1.myworkdayjobs.com/wday/cxs/cadence/External_Careers/jobs (https://cadence.wd1.myworkdayjobs.com/wday/cxs/cadence/External_Careers/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358246+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484873+00:00"
     },
     "Capital One": {
-      "consecutive_failures": 2,
+      "consecutive_failures": 3,
       "last_error": "Workday fetch failed for 'capitalone': 429 Client Error: Too Many Requests for url: https://capitalone.wd12.myworkdayjobs.com/wday/cxs/capitalone/Capital_One/jobs (https://capitalone.wd12.myworkdayjobs.com/wday/cxs/capitalone/Capital_One/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358195+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484821+00:00"
     },
     "Dell": {
-      "consecutive_failures": 4,
+      "consecutive_failures": 5,
       "last_error": "Workday fetch failed for 'dell': 429 Client Error: Too Many Requests for url: https://dell.wd1.myworkdayjobs.com/wday/cxs/dell/External/jobs (https://dell.wd1.myworkdayjobs.com/wday/cxs/dell/External/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358241+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484868+00:00"
     },
     "Deutsche Bank": {
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_error": "Workday fetch failed for 'db': 429 Client Error: Too Many Requests for url: https://db.wd3.myworkdayjobs.com/wday/cxs/db/DBWebsite/jobs (https://db.wd3.myworkdayjobs.com/wday/cxs/db/DBWebsite/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358249+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484875+00:00"
     },
     "FICO": {
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_error": "Workday fetch failed for 'fico': 429 Client Error: Too Many Requests for url: https://fico.wd1.myworkdayjobs.com/wday/cxs/fico/External/jobs (https://fico.wd1.myworkdayjobs.com/wday/cxs/fico/External/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358258+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484882+00:00"
     },
     "HP": {
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_error": "Workday fetch failed for 'hp': 429 Client Error: Too Many Requests for url: https://hp.wd5.myworkdayjobs.com/wday/cxs/hp/ExternalCareerSite/jobs (https://hp.wd5.myworkdayjobs.com/wday/cxs/hp/ExternalCareerSite/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358261+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484884+00:00"
     },
     "Intel": {
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_error": "Workday fetch failed for 'intel': 429 Client Error: Too Many Requests for url: https://intel.wd1.myworkdayjobs.com/wday/cxs/intel/External/jobs (https://intel.wd1.myworkdayjobs.com/wday/cxs/intel/External/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358243+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484870+00:00"
     },
     "LSEG": {
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_error": "Workday fetch failed for 'lseg': 429 Client Error: Too Many Requests for url: https://lseg.wd3.myworkdayjobs.com/wday/cxs/lseg/Careers/jobs (https://lseg.wd3.myworkdayjobs.com/wday/cxs/lseg/Careers/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358252+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484877+00:00"
     },
     "Motorola Solutions": {
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_error": "Workday fetch failed for 'motorolasolutions': 429 Client Error: Too Many Requests for url: https://motorolasolutions.wd5.myworkdayjobs.com/wday/cxs/motorolasolutions/Careers/jobs (https://motorolasolutions.wd5.myworkdayjobs.com/wday/cxs/motorolasolutions/Careers/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358264+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484886+00:00"
     },
     "Nvidia": {
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_error": "Workday fetch failed for 'nvidia': 429 Client Error: Too Many Requests for url: https://nvidia.wd5.myworkdayjobs.com/wday/cxs/nvidia/NVIDIAExternalCareerSite/jobs (https://nvidia.wd5.myworkdayjobs.com/wday/cxs/nvidia/NVIDIAExternalCareerSite/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358160+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484793+00:00"
     },
     "Qualcomm": {
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_error": "Workday fetch failed for 'qualcomm': 429 Client Error: Too Many Requests for url: https://qualcomm.wd12.myworkdayjobs.com/wday/cxs/qualcomm/External/jobs (https://qualcomm.wd12.myworkdayjobs.com/wday/cxs/qualcomm/External/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358256+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484879+00:00"
     },
     "Salesforce": {
-      "consecutive_failures": 2,
+      "consecutive_failures": 3,
       "last_error": "Workday fetch failed for 'salesforce': 429 Client Error: Too Many Requests for url: https://salesforce.wd12.myworkdayjobs.com/wday/cxs/salesforce/External_Career_Site/jobs (https://salesforce.wd12.myworkdayjobs.com/wday/cxs/salesforce/External_Career_Site/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358183+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484811+00:00"
     },
     "Walmart": {
-      "consecutive_failures": 4,
+      "consecutive_failures": 5,
       "last_error": "Workday fetch failed for 'walmart': 429 Client Error: Too Many Requests for url: https://walmart.wd5.myworkdayjobs.com/wday/cxs/walmart/WalmartExternal/jobs (https://walmart.wd5.myworkdayjobs.com/wday/cxs/walmart/WalmartExternal/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358237+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484865+00:00"
     },
     "Workday": {
-      "consecutive_failures": 1,
+      "consecutive_failures": 2,
       "last_error": "Workday fetch failed for 'workday': 429 Client Error: Too Many Requests for url: https://workday.wd5.myworkdayjobs.com/wday/cxs/workday/Workday/jobs (https://workday.wd5.myworkdayjobs.com/wday/cxs/workday/Workday/jobs)",
-      "last_failed_at": "2026-11-17T01:47:37.358191+00:00"
+      "last_failed_at": "2026-11-18T01:50:42.484818+00:00"
     }
   },
-  "generated_at": "2026-11-17T01:47:37.359014+00:00"
+  "generated_at": "2026-11-18T01:50:42.485544+00:00"
 }
