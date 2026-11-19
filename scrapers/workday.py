@@ -7,6 +7,7 @@ ats_config keys (companies.yaml):
   search_terms  optional list of search phrases, each searched separately.
 
 Hard limits keep one slow company from stalling the whole run.
+Retries with backoff on 429 / 5xx so rate limiting does not fail a company.
 """
 
 from __future__ import annotations
@@ -22,9 +23,12 @@ from .base import BaseScraper, JobPosting, ScrapeError
 log = logging.getLogger("scrape.workday")
 
 PAGE_SIZE = 20
-MAX_PAGES = 15              # 300 jobs per search term
+MAX_PAGES = 10              # 200 jobs per search term
 MAX_DETAIL_LOOKUPS = 40     # location lookups per company
-TIME_BUDGET_SECONDS = 90    # wall-clock cap per company
+TIME_BUDGET_SECONDS = 120   # wall-clock cap per company
+PAUSE_SECONDS = 1.0         # pause between requests
+RETRY_WAITS = [5, 15, 40]   # seconds to wait before each retry
+RETRY_STATUSES = {429, 500, 502, 503, 504}
 DEFAULT_TERMS = ["engineering manager", "head of engineering"]
 MULTI_LOCATION = re.compile(r"^\d+\s+locations?$", re.IGNORECASE)
 FALLBACK_TITLE = re.compile(r"senior|sr\.?|head of|manager", re.IGNORECASE)
@@ -85,12 +89,11 @@ class WorkdayScraper(BaseScraper):
                 continue
             location = (job.get("locationsText") or "").strip()
             if MULTI_LOCATION.match(location) and wanted(title):
-                if lookups >= MAX_DETAIL_LOOKUPS:
-                    log.warning("  %s: location lookup cap reached", self.company_name)
+                if lookups >= MAX_DETAIL_LOOKUPS or time.monotonic() > deadline:
+                    log.warning("  %s: skipping location lookup for %r (cap or time)",
+                                self.company_name, title)
                 else:
-                    if time.monotonic() > deadline:
-                        raise ScrapeError(f"Workday time budget exceeded for {tenant!r}")
-                    location = self._detail_location(base, tenant, site, path) or location
+                    location = self._detail_location(base, tenant, site, path, deadline) or location
                     lookups += 1
             postings.append(
                 JobPosting(
@@ -103,21 +106,46 @@ class WorkdayScraper(BaseScraper):
             )
         return postings
 
+    def _request(self, method: str, url: str, deadline: float, label: str, **kwargs):
+        last = ""
+        for attempt in range(len(RETRY_WAITS) + 1):
+            if time.monotonic() > deadline:
+                raise ScrapeError(f"Workday time budget exceeded for {label!r}")
+            resp = None
+            try:
+                resp = requests.request(method, url, headers=HEADERS,
+                                        timeout=self.TIMEOUT_SECONDS, **kwargs)
+            except requests.RequestException as exc:
+                last = str(exc)
+            if resp is not None:
+                if resp.status_code not in RETRY_STATUSES:
+                    try:
+                        resp.raise_for_status()
+                    except requests.RequestException as exc:
+                        raise ScrapeError(f"Workday fetch failed for {label!r}: {exc} ({url})")
+                    return resp
+                last = f"HTTP {resp.status_code}"
+            if attempt >= len(RETRY_WAITS):
+                break
+            wait = RETRY_WAITS[attempt]
+            retry_after = resp.headers.get("Retry-After") if resp is not None else None
+            if retry_after and retry_after.isdigit():
+                wait = min(max(wait, int(retry_after)), 30)
+            if time.monotonic() + wait > deadline:
+                break
+            log.warning("  %s: %s, retrying in %ds", label, last, wait)
+            time.sleep(wait)
+        raise ScrapeError(f"Workday fetch failed for {label!r} after retries: {last} ({url})")
+
     def _search(self, url: str, term: str, found: dict, label: str, deadline: float) -> None:
         offset = 0
         total = None
         for _ in range(MAX_PAGES):
-            if time.monotonic() > deadline:
-                raise ScrapeError(f"Workday time budget exceeded for {label!r}")
             body = {"appliedFacets": {}, "limit": PAGE_SIZE,
                     "offset": offset, "searchText": term}
+            resp = self._request("POST", url, deadline, label, json=body)
             try:
-                resp = requests.post(url, json=body, headers=HEADERS,
-                                     timeout=self.TIMEOUT_SECONDS)
-                resp.raise_for_status()
                 data = resp.json()
-            except requests.RequestException as exc:
-                raise ScrapeError(f"Workday fetch failed for {label!r}: {exc} ({url})")
             except ValueError as exc:
                 raise ScrapeError(f"Workday returned non-JSON for {label!r}: {exc}")
 
@@ -136,16 +164,16 @@ class WorkdayScraper(BaseScraper):
             offset += PAGE_SIZE
             if offset >= total:
                 break
-            time.sleep(0.2)
+            time.sleep(PAUSE_SECONDS)
 
-    def _detail_location(self, base: str, tenant: str, site: str, path: str) -> str:
+    def _detail_location(self, base: str, tenant: str, site: str, path: str,
+                         deadline: float) -> str:
         url = f"{base}/wday/cxs/{tenant}/{site}{path}"
         try:
-            resp = requests.get(url, headers=HEADERS, timeout=self.TIMEOUT_SECONDS)
-            resp.raise_for_status()
+            resp = self._request("GET", url, deadline, tenant)
             info = resp.json().get("jobPostingInfo") or {}
-        except (requests.RequestException, ValueError, AttributeError):
+        except (ScrapeError, ValueError, AttributeError):
             return ""
-        time.sleep(0.2)
+        time.sleep(PAUSE_SECONDS)
         parts = [info.get("location") or ""] + list(info.get("additionalLocations") or [])
         return "; ".join(p.strip() for p in parts if p and p.strip())
