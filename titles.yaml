@@ -3,6 +3,7 @@ titles:
     patterns:
       - '\b(?:senior|sr\.?)\s+(?:engineering|software)\s+manager\b'
       - '\b(?:senior|sr\.?)\s+manager\s*[,\-:]?\s*(?:sw\s+|software\s+)?engineering\b'
+      - '\bengineering\s+(?:senior|sr\.?)\s+manager\b'
       - '\bhead\s+of\s+engineering\b'
     excludes:
       - '\bstaff\b'

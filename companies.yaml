@@ -70,8 +70,5 @@ companies:
   - {name: FICO, url: "https://fico.wd1.myworkdayjobs.com/External", ats: skip, ats_config: {tenant: fico, host: wd1, site: External, search_terms: ["senior engineering manager", "senior manager engineering"]}}
   - {name: HP, url: "https://hp.wd5.myworkdayjobs.com/ExternalCareerSite", ats: skip, ats_config: {tenant: hp, host: wd5, site: ExternalCareerSite, search_terms: ["senior engineering manager", "senior manager engineering"]}}
   - {name: Motorola Solutions, url: "https://motorolasolutions.wd5.myworkdayjobs.com/Careers", ats: skip, ats_config: {tenant: motorolasolutions, host: wd5, site: Careers, search_terms: ["senior engineering manager", "senior manager engineering"]}}
-cd /workspaces/hunter
-sed -i '/ats: skip/ s/ats: skip/ats: skip/' companies.yaml
-git add companies.yaml
-git commit -m "Move Workday companies to Apps Script"
-git push
+  - {name: Couchbase, url: "https://job-boards.greenhouse.io/couchbaseinc", ats: greenhouse, ats_config: {board: couchbaseinc}}
+  - {name: SurveyMonkey, url: "https://jobs.ashbyhq.com/surveymonkey", ats: ashby, ats_config: {org: surveymonkey}}
